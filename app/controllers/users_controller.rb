@@ -14,6 +14,12 @@ class UsersController < ApplicationController
      end
   end
 
+  def subscribers
+  	@users = User.where.not(subscribed: false).count
+  	render json: @users
+  end
+  
+
   def all_users
   	@users = User.all.count
   	render json: @users
